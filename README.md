@@ -1,10 +1,10 @@
 # Classificação de dígitos SVM MNIST em python usando o scikit-learn
 
-O projeto apresenta o conhecido problema da [classificação de dígitos manuscritos MNIST] (https://en.wikipedia.org/wiki/MNIST_database).
+O projeto apresenta o conhecido problema da [classificação de dígitos manuscritos MNIST](https://en.wikipedia.org/wiki/MNIST_database).
 
-Para os fins deste tutorial, usarei [Support Vector Machine (SVM)] (https://en.wikipedia.org/wiki/Support_vector_machine) olhando pixels brutos.
+Para os fins deste tutorial, usarei [Support Vector Machine (SVM)](https://en.wikipedia.org/wiki/Support_vector_machine) olhando pixels brutos.
 
-A solução é escrita em python com o uso de [scikit-learn] (http://scikit-learn.org/stable/) f
+A solução é escrita em python com o uso de [scikit-learn](http://scikit-learn.org/stable/) f
 
 ![Sample MNIST digits visualization](/images/mnist_digits.png)
 
