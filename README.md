@@ -16,8 +16,8 @@ Embora a solução não seja otimizada para alta precisão, os resultados são b
 
 Se você deseja obter o melhor desempenho, esses dois recursos mostrarão as soluções atuais de última geração:
 
-* [Quem é o melhor no MNIST?] (Http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#4d4e495354)
-* [Competição do reconhecedor de dígitos Kaggle] (https://www.kaggle.com/c/digit-recognizer)
+* [Quem é o melhor no MNIST?](Http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#4d4e495354)
+* [Competição do reconhecedor de dígitos Kaggle](https://www.kaggle.com/c/digit-recognizer)
 
 A tabela abaixo mostra alguns resultados em comparação com outros modelos:
 
@@ -49,11 +49,11 @@ Projeto contém o Pipfile com todas as bibliotecas necessárias
 1. Git clona o repositório
 1. Instale todos os pacotes python necessários executando este comando no terminal
 
-`` ``
+```
 git clone https://github.com/ksopyla/svm_mnist_digit_classification.git
 cd svm_mnist_digit_classification
 instalação do pipenv
-`` ``
+```
 
 ## Solução
 
@@ -86,21 +86,21 @@ Em seguida, padroniza os dados (média = 0, padrão = 1) e inicia a pesquisa na 
 1. Pesquisa de parâmetros RBF do kernel MNIST SVM C = [0.1,0.5,1,5], gama = [0,01,0.0.05,0.1,0.5].
 
 A pesquisa em grade foi realizada para os parâmetros C e gama, onde C = [0,1,0,5,1,5], gama = [0,01,0.0.05,0.1,0.5].
-Até agora, examinei apenas 4x4 pares de parâmetros diferentes com validação cruzada de três vezes (modelos 4x4x3 = 48),
-esse procedimento leva 3687,2 minutos :) (2 dias, 13: 56: 42.531223 exatamente) em uma CPU de núcleo.
+Até agora, examinei apenas 4x4 pares de parâmetros diferentes com validação cruzada de três vezes (modelos 4x4x3 = 48), esse procedimento leva 3687,2 minutos (2 dias, 13: 56: 42.531223 exatamente) em uma CPU de núcleo.
 
 O espaço param foi gerado com espaço de log numpy e multiplicação da matriz externa.
-`` ``
+```
 C_range = np.outer (np.logspace (-1, 0, 2), np.array ([1,5]))
 # achatar matriz, mude para matriz numpy 1D
 C_range = C_range.flatten ()
 
 gamma_range = np.outer (np.logspace (-2, -1, 2), np.array ([1,5]))
 gamma_range = gamma_range.flatten ()
+```
 
-`` ``
+```
 Obviamente, você pode ampliar o intervalo de parâmetros, mas isso aumentará o tempo de computação.
-
+```
 
 ![Espaço de parâmetro do SVM RBF](https://plon.io/files/58d3af091b12ce00012bd6e1)
 
