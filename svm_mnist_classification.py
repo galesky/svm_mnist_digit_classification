@@ -11,12 +11,12 @@ import numpy as np
 # Importa datasets, classificadores e métricas de performance
 from sklearn import datasets, metrics, svm
 # Busca o data
-from sklearn.datasets import fetch_mldata
+from sklearn.datasets import fetch_openml
 from sklearn.model_selection import train_test_split
 
 from mnist_helpers import *
 
-mnist = fetch_mldata('MNIST original', data_home='./')
+mnist = fetch_openml('mnist_784')
 
 # O objeto do minist contem: data, COL_NAMES, DESCR, target fields
 # aqui imprimos rodando
@@ -74,4 +74,3 @@ print("Confusion matrix:\n%s" % cm)
 plot_confusion_matrix(cm)
 
 print("Accuracy={}".format(metrics.accuracy_score(expected, predicted)))
-
