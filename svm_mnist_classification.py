@@ -3,58 +3,46 @@
 # https://ksopyla.com
 # License: MIT
 
-# Standard scientific Python imports
+import datetime as dt
+import time
+
 import matplotlib.pyplot as plt
 import numpy as np
-import time
-import datetime as dt
-
-# Import datasets, classifiers and performance metrics
-from sklearn import datasets, svm, metrics
-#fetch original mnist dataset
+# Importa datasets, classificadores e métricas de performance
+from sklearn import datasets, metrics, svm
+# Busca o data
 from sklearn.datasets import fetch_mldata
+from sklearn.model_selection import train_test_split
 
-# import custom module
 from mnist_helpers import *
 
-
-# it creates mldata folder in your root project folder
 mnist = fetch_mldata('MNIST original', data_home='./')
 
-#minist object contains: data, COL_NAMES, DESCR, target fields
-#you can check it by running
+# O objeto do minist contem: data, COL_NAMES, DESCR, target fields
+# aqui imprimos rodando
 mnist.keys()
 
-#data field is 70k x 784 array, each row represents pixels from 28x28=784 image
+# o campo 'data' é um vetor 70k x 784 array, cada linha representa em pixels 28x28=784, formando uma imagem
 images = mnist.data
 targets = mnist.target
 
-# Let's have a look at the random 16 images, 
-# We have to reshape each data row, from flat array of 784 int to 28x28 2D array
-
-#pick  random indexes from 0 to size of our dataset
+# Imprimindo as imagens
+# Iremos transformar num vetor (assim como na rede)
 show_some_digits(images,targets)
 
 
-#---------------- classification begins -----------------
-#scale data for [0,255] -> [0,1]
-#sample smaller size for testing
-#rand_idx = np.random.choice(images.shape[0],10000)
-#X_data =images[rand_idx]/255.0
-#Y      = targets[rand_idx]
+#---------------- Inicio da classificação -----------------
+# Re-escala os dados para que [0,255] -> [0,1]
+# Separa em conjuntos de treinamento e teste
 
-#full dataset classification
 X_data = images/255.0
 Y = targets
 
-#split data to train and test
-#from sklearn.cross_validation import train_test_split
-from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X_data, Y, test_size=0.15, random_state=42)
 
 
-################ Classifier with good params ###########
-# Create a classifier: a support vector classifier
+################ Classificador ###########
+# Cria o classificador SVM com os hyperparametros C e gamma
 
 param_C = 5
 param_gamma = 0.05
@@ -71,7 +59,7 @@ print('Elapsed learning {}'.format(str(elapsed_time)))
 
 
 ########################################################
-# Now predict the value of the test
+# Realiza as predições
 expected = y_test
 predicted = classifier.predict(X_test)
 
@@ -86,5 +74,4 @@ print("Confusion matrix:\n%s" % cm)
 plot_confusion_matrix(cm)
 
 print("Accuracy={}".format(metrics.accuracy_score(expected, predicted)))
-
 
