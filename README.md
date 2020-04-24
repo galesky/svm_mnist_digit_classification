@@ -22,14 +22,14 @@ Se você deseja obter o melhor desempenho, esses dois recursos mostrarão as sol
 A tabela abaixo mostra alguns resultados em comparação com outros modelos:
 
 
-| Método Precisão Comentários |
-| -------------------------------------------- | ---- ------ | -------------- |
-| Random Forest | 0,937 | |
-| Rede neural simples de uma camada | 0,926 | |
-| Rede convolucional simples de 2 camadas | 0,981 | |
-| SVM RBF 0,9852 | C = 5, gama = 0,05 |
-| Aproximação linear do kernel SVM + Nystroem | | |
-| Aproximação linear do kernel SVM + Fourier | | |
+| Method                                     | Accuracy | Comments     |
+|--------------------------------------------|----------|--------------|
+| Random forest                              | 0.937    |              |
+| Simple one-layer neural network            | 0.926    |              |
+| Simple 2 layer convolutional network       | 0.981    |              |
+| SVM RBF                                    | 0.9852   | C=5, gamma=0.05 |
+| Linear SVM + Nystroem kernel approximation |          |              |
+| Linear SVM + Fourier kernel approximation  |          |              |
 
 
 ## Configuração do projeto
@@ -111,9 +111,26 @@ A pesquisa em grade é um processo demorado, para que você possa usar meus melh
 * precisão = 0,9852
 
 
-`` ``
-Matriz de confusão:
-[[1014 0 2 0 0 2 2 0 1 3]
- [0 1177 2 1 1 0 1 0 2 1]
- [2 2 1037 2 0 0 0 2 5 1]
- [0 0 3 1035 0
+```
+Confusion matrix:
+[[1014    0    2    0    0    2    2    0    1    3]
+ [   0 1177    2    1    1    0    1    0    2    1]
+ [   2    2 1037    2    0    0    0    2    5    1]
+ [   0    0    3 1035    0    5    0    6    6    2]
+ [   0    0    1    0  957    0    1    2    0    3]
+ [   1    1    0    4    1  947    4    0    5    1]
+ [   2    0    1    0    2    0 1076    0    4    0]
+ [   1    1    8    1    1    0    0 1110    2    4]
+ [   0    4    2    4    1    6    0    1 1018    1]
+ [   3    1    0    7    5    2    0    4    9  974]]
+Accuracy=0.985238095238
+```
+
+Exemplos (papers and software):
+
+* [Pegasos](http://ttic.uchicago.edu/~nati/Publications/PegasosMPB.pdf)
+* [Stochastic gradient descent](http://leon.bottou.org/projects/sgd)
+* [Averaged Stochastic gradient descent](https://arxiv.org/abs/1107.2490)
+* [Liblinear](https://www.csie.ntu.edu.tw/~cjlin/liblinear/)
+* [Stochastic Gradient Descent with Barzilai–Borwein update step for SVM](http://www.sciencedirect.com/science/article/pii/S0020025515002467)
+* [Primal SVM by Olivier Chappelle](http://olivier.chapelle.cc/primal/) - there also exists [Primal SVM in Python](https://github.com/ksopyla/primal_svm)
